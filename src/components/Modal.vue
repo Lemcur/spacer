@@ -1,7 +1,7 @@
 <template>
     <div>
     <div class="modalWrapper" @click="$emit('closeModal')"></div>
-        <div class="outerWrapper" >
+        <div class="outerWrapper" @keyup.native.13="console.log('help')" tabindex="1" >
             <div class="innerWrapper">
                 <div class="photo">
                     <img :src="photo" />
@@ -45,6 +45,7 @@ export default {
         this.photo = this.item.links[0].href;
         this.title = this.item.data[0].title;
         this.description = this.longDescription(this.item.data[0].description);
+        document.getElementsByClassName('outerWrapper')[0].focus();
     },
     methods: {
         longDescription: function(desc){
@@ -185,7 +186,6 @@ export default {
         .photo {
             width: 100%;
             height: auto;
-            background: black;
 
             
             img{
