@@ -32,7 +32,7 @@ export default{
 <style lang="scss" scoped>
 
     input{
-        margin-top: 50px;
+        margin: 50px 0 40px 0;
         display: flex;
         width: 250px;
         color:white;
