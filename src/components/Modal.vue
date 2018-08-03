@@ -185,9 +185,7 @@ export default {
 
         .photo {
             width: 100%;
-            height: auto;
-
-            
+            height: auto;           
             img{
                 width: 100%;
             }
@@ -199,10 +197,6 @@ export default {
         max-width:300px;
         max-height: 100%;
         overflow-y: auto;
-        // margin: 10px 20px;
-        // // @media (min-width: 1024px){
-        // //     width:80%;
-        // // }
     }
     .readMore {
         color:blue;
