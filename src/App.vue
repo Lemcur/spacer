@@ -72,16 +72,7 @@
           })
           .catch((error) => console.log(error))
       },
-      handleInput: debounce(function() {
-        this.loading = true;
-        axios.get(`${API}?q=${this.searchValue}&media_type=image`)
-          .then((response) =>{
-            this.results = response.data.collection.items;
-            this.loading = false;
-            this.step=1;
-          })
-          .catch((error) => console.log(error))
-      }, 1000),
+      handleInput: debounce(function() {this.searchAPI()}, 1000),
       handleModalOpen(item){
         this.modalOpen = true;
         this.modalItem = item;
