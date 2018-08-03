@@ -9,8 +9,10 @@
     <Claim v-if="step === 0" />
     <SearchInput 
     v-model="searchValue" 
+    @keyup.native.13="searchAPI"
     @input="handleInput"
     :dark="step === 1"
+    placeholder="e.g. Saturn"
     />
     <div class="results" v-if="results && !loading && step===1">
       <Item 
@@ -23,6 +25,7 @@
     v-if="modalOpen"
     @closeModal="modalOpen = false"
     :item="modalItem"
+    @keyup.native.esc="modalOpen = false"
     />
   </div>
 </template>
@@ -38,6 +41,7 @@
   import Modal from '@/components/Modal.vue'
 
   const API = 'https://images-api.nasa.gov/search';
+  
   export default {
     name: 'Search',
       components: {
@@ -58,6 +62,16 @@
       };
     },
     methods: {
+      searchAPI() {
+        this.loading = true;
+        axios.get(`${API}?q=${this.searchValue}&media_type=image`)
+          .then((response) =>{
+            this.results = response.data.collection.items;
+            this.loading = false;
+            this.step=1;
+          })
+          .catch((error) => console.log(error))
+      },
       handleInput: debounce(function() {
         this.loading = true;
         axios.get(`${API}?q=${this.searchValue}&media_type=image`)
