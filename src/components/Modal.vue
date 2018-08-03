@@ -185,7 +185,8 @@ export default {
 
         .photo {
             width: 100%;
-            height: auto;           
+            height: auto;      
+            margin-bottom:20px;     
             img{
                 width: 100%;
             }
